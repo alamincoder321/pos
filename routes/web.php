@@ -16,8 +16,6 @@ Auth::routes(['register' => false]);
 
 //====================== Pos and Login Route here ========================
 Route::get('/pos', [App\Http\Controllers\PosController::class, 'index'])->name('pos');
-Route::post('/invoice', [App\Http\Controllers\PosController::class, 'Invoice'])->name('invoice');
-
 //====================== Order and Login Route here ======================
 Route::post('/order-place', [App\Http\Controllers\OrderController::class, 'OrderPlace'])->name('order.place');
 Route::get('/order-details',[App\Http\Controllers\OrderController::class, 'index'])->name('details');
@@ -66,6 +64,7 @@ Route::get('/customer/inactive/{id}', [App\Http\Controllers\CustomerController::
 Route::resource('/supplier', App\Http\Controllers\SupplierController::class);
 Route::get('sup/supdue', [App\Http\Controllers\SupplierDueController::class, 'person'])->name('supdue');
 Route::post('sup/duepay', [App\Http\Controllers\SupplierDueController::class, 'SupduePay'])->name('supduepay');
+Route::get('sup/duepay/{id}', [App\Http\Controllers\SupplierDueController::class, 'SupPayShow'])->name('suppayshow');
 Route::get('/supplier/active/{id}', [App\Http\Controllers\SupplierController::class, 'Active'])->name('supplier.active');
 Route::get('/supplier/inactive/{id}', [App\Http\Controllers\SupplierController::class, 'Inactive'])->name('supplier.inactive');
 

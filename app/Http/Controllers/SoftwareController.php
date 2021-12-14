@@ -49,6 +49,10 @@ class SoftwareController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required'
+        ]);
+
         if($request->hasFile('logo')) {
 
             $image = $request->file('logo');
@@ -67,10 +71,20 @@ class SoftwareController extends Controller
             $img_url1 ="public/images/logo/favicon/".$filename;
         }
 
+        if($request->hasFile('admin')) {
+
+            $image = $request->file('admin');
+            $filename = uniqid() . "-" . time() . "." . $image->getClientOriginalExtension();
+
+            Image::make($image)->resize(128,128)->save(public_path('images/admin/'.$filename));
+            $img_url2 ="public/images/admin/".$filename;
+        }
+
         $setting = new Setting;
         $setting->title = ucwords($request->title);
         $setting->logo = $img_url;
         $setting->favicon = $img_url1;
+        $setting->admin = $img_url2;
         $setting->save();
 
         Toastr::success('Setting create Successfully!');
@@ -109,6 +123,10 @@ class SoftwareController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'title' => 'required'
+        ]);
+
         $setting = Setting::findOrFail($id);
         $old     = $request->image;
         $old1    = $request->image1;
@@ -135,9 +153,19 @@ class SoftwareController extends Controller
             $img_url1 ="public/images/logo/favicon/".$filename;
         }
 
+        if($request->hasFile('admin')) {
+
+            $image = $request->file('admin');
+            $filename = uniqid() . "-" . time() . "." . $image->getClientOriginalExtension();
+
+            Image::make($image)->resize(128,128)->save(public_path('images/admin/'.$filename));
+            $img_url2 ="public/images/admin/".$filename;
+        }
+
         $setting->title = ucwords($request->title);
         $setting->logo = $img_url;
         $setting->favicon = $img_url1;
+        $setting->admin = $img_url2;
         $setting->update();
 
         Toastr::success('Setting create Successfully!');

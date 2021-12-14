@@ -6,7 +6,9 @@
         @php
             $settings = App\Models\Setting::latest()->limit(1)->get(); 
         @endphp
-            <a href="{{route ('dashboard')}}" class="logo"><i class="md md-terrain"></i> <span>@foreach($settings as $setting){{ $setting->title }} @endforeach</span></a>
+        @foreach($settings as $setting)
+            <a href="{{route ('dashboard')}}" class="logo"><span>{{ $setting->title }}</span></a>
+        @endforeach
         </div>
     </div>
     <!-- Button mobile view to collapse sidebar menu -->
@@ -23,7 +25,7 @@
                 <ul class="nav navbar-nav navbar-right pull-right">
 
                     <li class="dropdown">
-                        <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="{{asset(('public/backend'))}}/images/shoaib.jpg" alt="user-img" class="img-circle"> </a>
+                        <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true">@foreach($settings as $setting)<img src="{{asset($setting->admin)}}" alt="user-img" class="img-circle">@endforeach </a>
                         <ul class="dropdown-menu">
                             <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile</a></li>
                             <li>

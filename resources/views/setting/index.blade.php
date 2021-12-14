@@ -28,7 +28,8 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Logo</th>
+                                        <th>User Image</th>
+                                        <th>Logo & FavIcon</th>
                                         <th>Software Title</th>
                                         <th>Action</th>                                
                                     </tr>
@@ -38,6 +39,9 @@
                                     @foreach($settings as $key=>$setting)
                                     <tr>
                                         <td>{{$key+1}}</td>
+                                        <td>
+                                            <img src="{{asset($setting->admin)}}" width="60">
+                                        </td>
                                         <td>
                                             <img src="{{asset($setting->logo)}}" width="60">
                                         </td>

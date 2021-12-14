@@ -24,6 +24,11 @@ class OrderController extends Controller
 
     public function OrderPlace(Request $request)
     {
+        $this->validate($request, [
+            'customer_id' => 'required',
+        ],[
+            'customer_id.required' => 'Select customer Name first'
+        ]);
 
         $data               = new Order;
         $data->customer_id  = $request->customer_id;
@@ -55,7 +60,7 @@ class OrderController extends Controller
         Cart::where('user_ip', request()->ip())->delete();
 
         Toastr::success('Invoice Confirm Added on order table');
-        return redirect()->route('details');
+        return back();
     }
 
     public function index()

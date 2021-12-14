@@ -37,13 +37,18 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-lg-2">Image</label>
+                                <label class="control-label col-lg-2">Admin Image</label>
+                                <div class="col-lg-9">
+                                    <img src="{{asset($setting->admin)}}" width="80">
+                                    <input type="file" name="admin" class=" form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">Logo Image</label>
                                 <div class="col-lg-9">
                                     <img src="{{asset($setting->logo)}}" width="80">
                                     <input type="file" name="logo" class=" form-control">
-                                    @if ($errors->has('logo'))
-                                    <span class="text-danger">{{$errors->first('logo')}}</span>
-                                    @endif
                                 </div>
                             </div>
 

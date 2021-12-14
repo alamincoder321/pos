@@ -36,5 +36,11 @@ class SupplierDueController extends Controller
         Toastr::success('Supplier pay due successfully!');
         return back();
     }
+
+    public function SupPayShow($id)
+    {
+        $suppays = DueSupplier::where('supplier_id', $id)->latest()->get();
+        return view('supdue.suppay', compact('suppays'));
+    }
     
 }

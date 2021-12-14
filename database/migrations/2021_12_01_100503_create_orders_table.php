@@ -18,7 +18,6 @@ class CreateOrdersTable extends Migration
             $table->bigInteger('customer_id')->unsigned();
             $table->string('invoice_no');
             $table->string('pay_date');
-            $table->string('orderby');
             $table->string('pay_amount')->nullable();
             $table->string('total');
             $table->string('due');

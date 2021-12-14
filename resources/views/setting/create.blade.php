@@ -29,19 +29,20 @@
                                 <label class="control-label col-lg-2">Software Title</label>
                                 <div class="col-lg-9">
                                     <input type="text" name="title" class=" form-control" value="{{old('title')}}">
-                                    @if ($errors->has('title'))
-                                    <span class="text-danger">{{$errors->first('title')}}</span>
-                                    @endif
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-lg-2">Image</label>
+                                <label class="control-label col-lg-2">Admin Image</label>
+                                <div class="col-lg-9">
+                                    <input type="file" name="admin" class=" form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">Logo Image</label>
                                 <div class="col-lg-9">
                                     <input type="file" name="logo" class=" form-control">
-                                    @if ($errors->has('logo'))
-                                    <span class="text-danger">{{$errors->first('logo')}}</span>
-                                    @endif
                                 </div>
                             </div>
 

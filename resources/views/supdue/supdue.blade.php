@@ -39,10 +39,11 @@
                                     <tr>
                                         <td>{{$key+1}}</td>
                                         <td>{{$supplier->name}}</td>
-                                        <td>{{$supplier->product->sum('buy_cost')*$supplier->product->sum('tweight')}}</td>
+                                        <td>{{($supplier->product->sum('buy_cost')*$supplier->product->sum('tweight'))-$supplier->duesupplier->sum('pay_due')}}</td>
                                         <td>{{($supplier->product->sum('tweight')-$supplier->product->sum('weight'))*$supplier->product->sum('buy_cost')-$supplier->duesupplier->sum('pay_due')}}</td>
                                         <td class="text-right">
-                                          <button data-id="{{$supplier->id}}" class="btn btn-info btn-sm button" data-toggle="modal" data-target="#con-close-modal"><i class="fa fa-check"></i></button>
+                                            <a href="{{route('suppayshow',$supplier->id)}}" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
+                                            <button data-id="{{$supplier->id}}" class="btn btn-info btn-sm button" data-toggle="modal" data-target="#con-close-modal"><i class="fa fa-check"></i></button>
                                         </td>
                                     </tr>
                                     @endforeach

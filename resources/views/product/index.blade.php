@@ -43,13 +43,13 @@
                                     @foreach($products as $key=>$product)
                                     <tr>
                                         <td>{{$key+1}}</td>
-                                        <td>{{$product->name}}</td>
-                                        <td>{{$product->category->name}}</td>
-                                        <td>{{$product->buy_cost}} taka</td>
-                                        <td>{{$product->unit_cost}} taka</td>
-                                        <td>{{$product->tweight}} kg</td>
-                                        <td>{{$product->weight}} kg</td>
-                                        <td>{{$product->weight*$product->buy_cost}} tk</td>
+                                        <td class="text-center">{{$product->name}}</td>
+                                        <td class="text-center">{{$product->category->name}}</td>
+                                        <td class="text-center">{{$product->buy_cost}} taka</td>
+                                        <td class="text-center">{{$product->unit_cost}} taka</td>
+                                        <td class="text-center">{{$product->tweight}} kg</td>
+                                        <td class="text-center"><span class="btn btn-success btn-sm">{{$product->weight}} kg</span> </td>
+                                        <td class="text-center">{{$product->weight*$product->buy_cost}} tk</td>
 
                                          <td class="text-right">
                                           @if($product->status == 1)

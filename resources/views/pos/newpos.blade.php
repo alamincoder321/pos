@@ -110,51 +110,35 @@
                     @csrf
                     <div class="col-md-12 row mb-4">
                         <div class="col-md-6 card">                        
-                            <button type="button" id="new_customer" class="btn btn-success">New Customer</button>
+                            <button type="button" id="new_customer" class="btn btn-info" data-toggle="modal" data-target="#con-close-modal" class="btn btn-success">New Customer</button>
                         </div>
                         <div class="col-md-6">                        
                             <button type="button" id="exit_customer" class="btn btn-purple">Exit Customer</button> 
                         </div>
-                    </div> <br><br><br><br>
-    {{--                 <div class="new">
-                        <div class="col-md-8 col-md-offset-2 mt-md-3">
-                            <div class="form-group col-md-6">
-                                <label>Name</label>
-                                <input type="text" name="name" class="form-control">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Phone Number</label>
-                                <input type="text" name="phone" class="form-control">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>City Name</label>
-                                <input type="text" name="city_name" class="form-control">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Upozila Name</label>
-                                <input type="text" name="upozila" class="form-control">
-                            </div>
-                        </div>
-                    </div> --}}
+                    </div>
+                    @if ($errors->has('customer_id'))
+                        <span class="text-danger">{{ $errors->first('customer_id') }}</span>
+                    @endif
                     <div class="exit">
+                        <br><br><br><br>
                         <div class="col-md-8 col-md-offset-2 mt-md-3">
                             <select name="customer_id" class="form-control text-center customer">
                                 <option label="Select customer name"></option>
-                            @foreach ($customers as $customer)
-                              <option value="{{$customer->id}}">{{$customer->name}}</option>  
-                            @endforeach
+                                @foreach ($customers as $customer)
+                                  <option value="{{$customer->id}}">{{$customer->name}}</option>  
+                                @endforeach
                             </select>
                         </div>
-                    </div><br><br><br><br>
+                    </div><br><br><br>
                     <div class="pay">
                         <div class="col-md-8 col-md-offset-2">
                             <div class="form-group col-md-6">
                                 <label>Pay Amount</label>
-                                <input type="text" name="pay_amount" class="form-control">
+                                <input type="text" name="pay_amount" class="form-control" autocomplete="off">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Discount</label>
-                                <input type="text" name="discount" class="form-control">
+                                <input type="text" name="discount" class="form-control" autocomplete="off">
                             </div>
                             <div class="form-group col-md-6 col-md-offset-3">
                                 <label>Total Amount</label>
@@ -169,23 +153,80 @@
             </form>
         </div>
     </div> <!-- End Row -->
+
+<!-- Modal content  --->
+<div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title"> Customer Add </h4>
+            </div>
+            <form action="{{ route('customer.store') }}" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="field-1" class="control-label">First Name</label>
+                                <input type="text" name="name" class="form-control" autocomplete="off">
+                                @if ($errors->has('name'))
+                                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="field-4" class="control-label">Phone</label>
+                                <input type="number" name="phone" class="form-control" autocomplete="off">
+                                @if ($errors->has('phone'))
+                                    <span class="text-danger">{{ $errors->first('phone') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="field-2" class="control-label">City</label>
+                                <input type="text" name="city_name" class="form-control" autocomplete="off">
+                                @if ($errors->has('city_name'))
+                                    <span class="text-danger">{{ $errors->first('city_name') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="field-3" class="control-label">Upozila</label>
+                                <input type="text" name="upozila" class="form-control" autocomplete="off">
+                                @if ($errors->has('upozila'))
+                                    <span class="text-danger">{{ $errors->first('upozila') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-info waves-effect waves-light">Add Customer</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div><!-- /.modal -->
 @endsection
 
 @push('js')
 <script>
     $(document).ready(function(){
-        $('.new').hide();
-        $("#new_customer").click(function(){
-            $('.new').show();
-            $('.exit').hide();
+        $('.exit').hide();
+        $("#exit_customer").click(function(){
+            $('.exit').show();
         });
     });
 
-    $(document).ready(function(){
-        $('.exit').show();
-        $("#exit_customer").click(function(){
-            $('.new').hide();
-            $('.exit').show();
+    $(document).ready(function(){        
+        $("#new_customer").click(function(){
+            $('.exit').hide();
         });
     });
 
@@ -195,4 +236,3 @@
 </script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 @endpush
-
