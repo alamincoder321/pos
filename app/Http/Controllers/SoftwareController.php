@@ -74,7 +74,7 @@ class SoftwareController extends Controller
         $setting = new Setting;
         $setting->title = ucwords($request->title);
         $setting->logo = $img_url;
-        $setting->favicon = $img_url1;
+        $setting->admin = $img_url1;
         $setting->save();
 
         Toastr::success('Setting create Successfully!');
@@ -146,7 +146,7 @@ class SoftwareController extends Controller
 
         $setting->title = ucwords($request->title);
         $setting->logo = $img_url;
-        $setting->favicon = $img_url1;
+        $setting->admin = $img_url1;
         $setting->update();
 
         Toastr::success('Setting create Successfully!');

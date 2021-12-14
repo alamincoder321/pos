@@ -10,7 +10,7 @@
             $settings = App\Models\Setting::latest()->limit(1)->get(); 
         @endphp
         @foreach($settings as $setting)
-        <link rel="shortcut icon" href="{{asset($setting->favicon)}}">
+        <link rel="shortcut icon" href="{{asset($setting->logo)}}">
         <title>{{ $setting->title }}</title>
         @endforeach
       @include('layouts.backend.style')
