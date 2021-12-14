@@ -28,7 +28,7 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-2">First Name</label>
                                 <div class="col-lg-9">
-                                    <input type="text" name="name" class=" form-control">
+                                    <input type="text" name="name" class=" form-control" value="{{old('name')}}">
                                     @if ($errors->has('name'))
                                     <span class="text-danger">{{$errors->first('name')}}</span>
                                     @endif
@@ -37,7 +37,7 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-2">Phone Number</label>
                                 <div class="col-lg-9">
-                                    <input type="number" name="phone" class="form-control">
+                                    <input type="number" name="phone" class="form-control" value="{{old('phone')}}">
                                     @if ($errors->has('phone'))
                                     <span class="text-danger">{{$errors->first('phone')}}</span>
                                     @endif
@@ -46,7 +46,7 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-2">City</label>
                                 <div class="col-lg-9">
-                                    <input type="text" name="city_name" class="form-control">
+                                    <input type="text" name="city_name" class="form-control" value="{{old('city_name')}}">
                                     @if ($errors->has('city_name'))
                                     <span class="text-danger">{{$errors->first('city_name')}}</span>
                                     @endif
@@ -55,7 +55,7 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-2">Upozila</label>
                                 <div class="col-lg-9">
-                                    <input type="text" name="upozila" class="form-control">
+                                    <input type="text" name="upozila" class="form-control" value="{{old('upozila')}}">
                                     @if ($errors->has('upozila'))
                                     <span class="text-danger">{{$errors->first('upozila')}}</span>
                                     @endif
