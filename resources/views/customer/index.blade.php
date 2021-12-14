@@ -30,10 +30,8 @@
                                         <th>#</th>
                                         <th>FullName</th>                                     
                                         <th>Phone</th>
-                                        <th>ShopName</th>
                                         <th>City</th>
                                         <th>Upozila</th>
-                                        <th>Street</th>
                                         <th>Action</th>                                
                                     </tr>
                                 </thead>
@@ -42,24 +40,11 @@
                                     @foreach($customers as $key=>$customer)
                                     <tr>
                                         <td>{{$key+1}}</td>
-                                        <td>{{$customer->fname}} {{$customer->lname}}</td>
+                                        <td>{{$customer->name}}</td>
                                         <td>{{$customer->phone}}</td>
-                                        <td>
-                                        @if($customer->street === NULL)
-                                            Null
-                                        @else
-                                            {{$customer->street}}
-                                        @endif 
-                                        </td>
+                                        
                                         <td>{{$customer->city_name}}</td>
                                         <td>{{$customer->upozila}}</td>
-                                        <td>
-                                        @if($customer->street === NULL)
-                                            Null
-                                        @else
-                                            {{$customer->street}}
-                                        @endif
-                                        </td>
                                         <td class="text-right">
                                         @if($customer->status == 1)
                                             <a href="{{route ('customer.inactive', $customer->id)}}" class="btn btn-success btn-sm"><i class="ion-checkmark"></i></a>

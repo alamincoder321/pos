@@ -36,7 +36,7 @@
         <div style="display: flex;border-bottom: 1px solid black;">
             <div style="width:55%; display:flex;">
                 <p style="padding: 7px 35px;font-size: 25px;background: green;border: none;color: black;border-top-right-radius: 15px;box-sizing: border-box;">নাম-</p>
-                <p style="font-size:20px;padding-top: 10px; padding-left: 35px; box-sizing: border-box;">{{$finalinvoice->customer->fname}} {{$finalinvoice->customer->lname}}</p>
+                <p style="font-size:20px;padding-top: 10px; padding-left: 35px; box-sizing: border-box;">{{$finalinvoice->customer->name}}</p>
             </div>
             <div style="width:45%; display:flex">
                 <p style="padding: 7px 35px;font-size: 20px;line-height: 35px; background: green;border: none;color: black;border-top-right-radius: 15px;box-sizing: border-box;">কাস্টমার নাম্বার-</p>
@@ -97,19 +97,6 @@
             </table>
         </div>
     </div>
-
-    <section style="background: darkgray;  padding: 8px;font-size: 17px;">
-        <table width="100%" cellpadding="5" cellspacing="0">
-            <tr>
-                <td style="width: 70%;"><strong style="box-sizing: border-box; padding-left: 20px;">কন্ডিশন-</strong>@if($finalinvoice->condition!==Null) <span style="padding-left: 70px;">{{$finalinvoice->condition}} /-</span>@endif</td>
-                <td style="width:30%;">                    
-                    <input type="checkbox" {{$finalinvoice->condition!==Null ? 'checked':''}}> চার্জ
-                    
-                    <input style="margin-left: 30px;" type="checkbox" {{$finalinvoice->condition==Null ? 'checked':''}}> চার্জ ছাড়া
-                </td>
-            </tr>
-        </table>
-    </section>
 
     <div style="width:100%; text-align:center; font-size: 20px;margin-top: 35px;">আমাদের পন্যসমূহ</div>
     <section style="display: flex;">

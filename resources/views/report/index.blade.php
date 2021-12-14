@@ -39,7 +39,7 @@
                                     @foreach ($customers as $key=>$customer)
                                     <tr>
                                         <td>{{$key+1}}</td>
-                                        <td>{{$customer->fname}} {{$customer->lname}}</td>
+                                        <td>{{$customer->name}}</td>
                                         <td>{{$customer->order->sum('total')}}</td>
                                         <td>{{$customer->order->sum('pay_amount')+$customer->due->sum('pay_due')}}</td>
                                         <td>{{$customer->order->sum('due')-$customer->due->sum('pay_due')}}</td>

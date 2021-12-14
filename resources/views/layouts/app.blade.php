@@ -6,10 +6,13 @@
         <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
         <meta name="author" content="Coderthemes">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link rel="shortcut icon" href="{{asset(('public/backend'))}}/images/favicon_1.ico">
-
-        <title>{{ config('app.name') }}</title>
-
+        @php
+            $settings = App\Models\Setting::latest()->limit(1)->get(); 
+        @endphp
+        @foreach($settings as $setting)
+        <link rel="shortcut icon" href="{{asset($setting->favicon)}}">
+        <title>{{ $setting->title }}</title>
+        @endforeach
       @include('layouts.backend.style')
         
     </head>

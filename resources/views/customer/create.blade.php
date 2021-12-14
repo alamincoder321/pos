@@ -28,27 +28,9 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-2">First Name</label>
                                 <div class="col-lg-9">
-                                    <input type="text" name="fname" class=" form-control" autocomplete="off">
-                                    @if ($errors->has('fname'))
-                                    <span class="text-danger">{{$errors->first('fname')}}</span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-lg-2">Last Name</label>
-                                <div class="col-lg-9">
-                                    <input type="text" name="lname" class=" form-control" autocomplete="off">
-                                    @if ($errors->has('lname'))
-                                    <span class="text-danger">{{$errors->first('lname')}}</span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-lg-2">Shop Name</label>
-                                <div class="col-lg-9">
-                                    <input type="text" name="shop_name" class="form-control" autocomplete="off" placeholder="Nullable">
-                                     @if ($errors->has('shop_name'))
-                                    <span class="text-danger">{{$errors->first('shop_name')}}</span>
+                                    <input type="text" name="name" class=" form-control" autocomplete="off">
+                                    @if ($errors->has('name'))
+                                    <span class="text-danger">{{$errors->first('name')}}</span>
                                     @endif
                                 </div>
                             </div>
@@ -76,15 +58,6 @@
                                     <input type="text" name="upozila" class="form-control" autocomplete="off">
                                     @if ($errors->has('upozila'))
                                     <span class="text-danger">{{$errors->first('upozila')}}</span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-lg-2">Street</label>
-                                <div class="col-lg-9">
-                                    <input type="text" name="street" class="form-control" autocomplete="off" placeholder="Nullable">
-                                    @if ($errors->has('street'))
-                                    <span class="text-danger">{{$errors->first('street')}}</span>
                                     @endif
                                 </div>
                             </div>

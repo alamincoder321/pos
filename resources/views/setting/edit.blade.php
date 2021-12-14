@@ -38,8 +38,8 @@
 
                             <div class="form-group">
                                 <label class="control-label col-lg-2">Image</label>
-                                <img src="{{asset($setting->logo)}}" width="100">
                                 <div class="col-lg-9">
+                                    <img src="{{asset($setting->logo)}}" width="80">
                                     <input type="file" name="logo" class=" form-control">
                                     @if ($errors->has('logo'))
                                     <span class="text-danger">{{$errors->first('logo')}}</span>

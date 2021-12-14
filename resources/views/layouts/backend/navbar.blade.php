@@ -3,7 +3,10 @@
     <!-- LOGO -->
     <div class="topbar-left">
         <div class="text-center">
-            <a href="{{route ('dashboard')}}" class="logo"><i class="md md-terrain"></i> <span>{{ config('app.name') }} </span></a>
+        @php
+            $settings = App\Models\Setting::latest()->limit(1)->get(); 
+        @endphp
+            <a href="{{route ('dashboard')}}" class="logo"><i class="md md-terrain"></i> <span>@foreach($settings as $setting){{ $setting->title }} @endforeach</span></a>
         </div>
     </div>
     <!-- Button mobile view to collapse sidebar menu -->

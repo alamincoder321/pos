@@ -44,7 +44,7 @@
                                     @foreach ($orders as $item)
                                     <tr>
                                         <td>{{$item->pay_date}}</td>
-                                        <td>{{$item->customer->fname}} {{$item->customer->lname}}</td>
+                                        <td>{{$item->customer->name}}</td>
                                         <td>{{$item->total}}</td>
                                         <td>{{$item->pay_amount}}</td>
                                         <td>{{$item->due}}</td>

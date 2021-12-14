@@ -29,14 +29,11 @@ class OrderController extends Controller
         $data->customer_id  = $request->customer_id;
         $data->invoice_no   = rand(1000000, 9999999);
         $data->pay_date     = $request->pay_date;
-        $data->pay_type     = $request->pay_type;
         $data->month        = $request->month;
-        $data->orderby      = $request->orderby;
-        $data->pay_amount   = $request->pay_amount+$request->condition;
-        $data->condition    = $request->condition;
-        $data->due          = $request->total-$request->pay_amount-$request->discount-$request->condition;
+        $data->pay_amount   = $request->pay_amount;
+        $data->due          = $request->total-$request->pay_amount;
         $data->discount     = $request->discount;
-        $data->total        = $request->total;
+        $data->total        = $request->total-$request->discount;
         $data->save();
 
         $order_id = $data->id;

@@ -33,7 +33,7 @@ class PosController extends Controller
         $categories = Category::where('status', 1)->latest()->get();
         $customers = Customer::where('status', 1)->latest()->get();
         $carts     = Cart::where('user_ip', request()->ip())->latest()->get();
-        return view('pos.index', compact('products', 'categories', 'customers', 'carts', 'total'));
+        return view('pos.newpos', compact('products', 'categories', 'customers', 'carts', 'total'));
     }
 
     public function Invoice(Request $request)

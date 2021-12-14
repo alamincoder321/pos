@@ -40,20 +40,16 @@ class CustomerController extends Controller
     {
         $this->validate($request, [
             'fname'         => 'required',
-            'lname'         => 'required',
             'phone'         => 'required|min:11',
             'city_name'     => 'required',
             'upozila'       => 'required',
         ]);
 
         Customer::insert([
-            'fname'     => ucwords($request->fname),
-            'lname'     => ucwords($request->lname),
+            'name'     => ucwords($request->name),
             'phone'     => $request->phone,
-            'shop_name' => $request->shop_name,
             'city_name' => ucwords($request->city_name),
             'upozila'   => ucwords($request->upozila),
-            'street'    => $request->street,
             'created_at'=> Carbon::now()
         ]);
 
@@ -94,21 +90,17 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'fname'         => 'required',
-            'lname'         => 'required',
+            'name'         => 'required',
             'phone'         => 'required',
             'city_name'     => 'required',
             'upozila'       => 'required',
         ]);
 
         $customer = Customer::findOrFail($id);
-        $customer->fname     = ucwords($request->fname);
-        $customer->lname     = ucwords($request->lname);
+        $customer->name     = ucwords($request->name);
         $customer->phone     = $request->phone;
-        $customer->shop_name = $request->shop_name;
         $customer->city_name = ucwords($request->city_name);
         $customer->upozila   = ucwords($request->upozila);
-        $customer->street    = $request->street;
         $customer->updated_at= Carbon::now();
         $customer->update();
 

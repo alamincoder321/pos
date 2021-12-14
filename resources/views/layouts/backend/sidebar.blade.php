@@ -109,7 +109,8 @@
                     <a class="waves-effect @yield('setting')"><i class=" md-payment"></i><span> Setting
                         </span><span class="pull-right"><i class="md md-add"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('setting.create') }}">Software Setting create</a></li>
+                        <li><a href="{{ route('setting.create') }}">Setting create</a></li>
+                        <li><a href="{{ route('setting.index') }}"> Setting manage</a></li>
                     </ul>
                 </li>
 

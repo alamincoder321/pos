@@ -39,7 +39,7 @@
                                         @if($customer->order->sum('due')-$customer->due->sum('pay_due') == 0)
                                         @else
                                         <td>{{$key+1}}</td>
-                                        <td>{{$customer->fname}} {{$customer->lname}}</td>
+                                        <td>{{$customer->name}}</td>
                                         <td>{{$customer->order->sum('due')-$customer->due->sum('pay_due')}}</td>
                                         <td class="pull-right align-content-center">
                                             <a href="{{route ('list.due', $customer->id)}}" class="btn btn-success btn-sm"><i class="fa fa-eye text-danger"></i> Due List</a>
