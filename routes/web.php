@@ -16,10 +16,15 @@ Auth::routes(['register' => false]);
 
 //====================== Pos and Login Route here ========================
 Route::get('/pos', [App\Http\Controllers\PosController::class, 'index'])->name('pos');
+
 //====================== Order and Login Route here ======================
 Route::post('/order-place', [App\Http\Controllers\OrderController::class, 'OrderPlace'])->name('order.place');
 Route::get('/order-details',[App\Http\Controllers\OrderController::class, 'index'])->name('details');
 Route::get('/final-invoice/{id}', [App\Http\Controllers\OrderController::class, 'FinalInvoice'])->name('final.invoice');
+
+//====================== Chalan and Login Route here ========================
+Route::get('/chalan', [App\Http\Controllers\ChalanController::class, 'index'])->name('chalan.index');
+
 
 //====================== Cart and Login Route here ========================
 Route::post('/cart/add/{id}', [App\Http\Controllers\CartController::class, 'store'])->name('addcart');
