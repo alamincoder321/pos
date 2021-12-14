@@ -106,26 +106,93 @@
                     <h4 class="text-white p-0 m-0">{{$total}} taka</h4>
                     <hr>                    
                 </div>
-
-                <div class="col-md-12 d-flex justify-content-between">
-                    <input type="radio" name="customer_id" class="form-control"> New Customer
-                    <input type="radio" name="customer_id" class="form-control"> Exit Customer
-                </div>
-                <div class="new-customer">
-                    
-                </div>
-                <button type="submit" class="btn btn-success btn-lg text-center">Save Order</button>
-            </div> <!-- end Pricing_card -->
+                <form action="{{route ('order.place')}}" method="POST">
+                    @csrf
+                    <div class="col-md-12 row mb-4">
+                        <div class="col-md-6 card">                        
+                            <button type="button" id="new_customer" class="btn btn-success">New Customer</button>
+                        </div>
+                        <div class="col-md-6">                        
+                            <button type="button" id="exit_customer" class="btn btn-purple">Exit Customer</button> 
+                        </div>
+                    </div> <br><br><br><br>
+    {{--                 <div class="new">
+                        <div class="col-md-8 col-md-offset-2 mt-md-3">
+                            <div class="form-group col-md-6">
+                                <label>Name</label>
+                                <input type="text" name="name" class="form-control">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Phone Number</label>
+                                <input type="text" name="phone" class="form-control">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>City Name</label>
+                                <input type="text" name="city_name" class="form-control">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Upozila Name</label>
+                                <input type="text" name="upozila" class="form-control">
+                            </div>
+                        </div>
+                    </div> --}}
+                    <div class="exit">
+                        <div class="col-md-8 col-md-offset-2 mt-md-3">
+                            <select name="customer_id" class="form-control text-center customer">
+                                <option label="Select customer name"></option>
+                            @foreach ($customers as $customer)
+                              <option value="{{$customer->id}}">{{$customer->name}}</option>  
+                            @endforeach
+                            </select>
+                        </div>
+                    </div><br><br><br><br>
+                    <div class="pay">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="form-group col-md-6">
+                                <label>Pay Amount</label>
+                                <input type="text" name="pay_amount" class="form-control">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Discount</label>
+                                <input type="text" name="discount" class="form-control">
+                            </div>
+                            <div class="form-group col-md-6 col-md-offset-3">
+                                <label>Total Amount</label>
+                                <input type="text" name="total" class="form-control text-center" value="{{$total}}">
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="pay_date" value="{{date('d.m.Y')}}">
+                    <input type="hidden" name="month" value="{{date('m.Y')}}">
+                    <button type="submit" class="btn btn-success btn-lg text-center">Save Order</button>
+                </div> <!-- end Pricing_card -->
+            </form>
         </div>
     </div> <!-- End Row -->
 @endsection
 
-{{-- @push('js')
+@push('js')
 <script>
+    $(document).ready(function(){
+        $('.new').hide();
+        $("#new_customer").click(function(){
+            $('.new').show();
+            $('.exit').hide();
+        });
+    });
+
+    $(document).ready(function(){
+        $('.exit').show();
+        $("#exit_customer").click(function(){
+            $('.new').hide();
+            $('.exit').show();
+        });
+    });
+
     function updateCategory(id){
         $("#product-body").load('{{URL::to('/load/product')}}/'+id);
     }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-@endpush --}}
+@endpush
 

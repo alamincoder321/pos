@@ -30,7 +30,6 @@
                                         <th>Name</th>                                     
                                         <th>Invoice_no</th>
                                         <th>Order_date</th>
-                                        <th>Method</th>
                                         <th>Total</th>
                                         <th>Payment</th>
                                         <th>Due</th>
@@ -43,10 +42,9 @@
                                     @foreach($orders as $key=>$order)
                                     <tr>
                                         <td>{{$key+1}}</td>
-                                        <td>{{$order->customer->fname}} {{$order->customer->lname}}</td>
+                                        <td>{{$order->customer->name}}</td>
                                         <td>{{$order->invoice_no}}</td>
                                         <td>{{$order->pay_date}}</td>
-                                        <td>{{$order->pay_type}}</td>
                                         <td>{{$order->total}}</td>
                                         <td>{{$order->pay_amount}}</td>
                                         <td>{{$order->due}}</td>

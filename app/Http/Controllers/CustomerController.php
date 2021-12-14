@@ -30,6 +30,11 @@ class CustomerController extends Controller
         return view('customer.create');
     }
 
+    public function Load()
+    {
+        return view('pos.load_newcustomer');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -39,7 +44,7 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'fname'         => 'required',
+            'name'         => 'required',
             'phone'         => 'required|min:11',
             'city_name'     => 'required',
             'upozila'       => 'required',
