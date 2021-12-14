@@ -52,8 +52,8 @@
                                 </div>
                             </div>
 
-                            <input type="hidden" name="image" value="{{$setting->favicon}}">
-                            <input type="hidden" name="image1" value="{{$setting->logo}}">
+                            <input type="hidden" name="image" value="{{$setting->logo}}">
+                            <input type="hidden" name="image1" value="{{$setting->admin}}">
 
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-1">

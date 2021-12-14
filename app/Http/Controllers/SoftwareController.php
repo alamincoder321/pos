@@ -58,17 +58,8 @@ class SoftwareController extends Controller
             $image = $request->file('logo');
             $filename = uniqid() . "-" . time() . "." . $image->getClientOriginalExtension();
 
-            Image::make($image)->resize(100,100)->save(public_path('images/logo/'.$filename));
+            Image::make($image)->resize(60,60)->save(public_path('images/logo/'.$filename));
             $img_url ="public/images/logo/".$filename;
-        }
-
-        if($request->hasFile('logo')) {
-
-            $image = $request->file('logo');
-            $filename = uniqid() . "-" . time() . "." . $image->getClientOriginalExtension();
-
-            Image::make($image)->resize(60,60)->save(public_path('images/logo/favicon/'.$filename));
-            $img_url1 ="public/images/logo/favicon/".$filename;
         }
 
         if($request->hasFile('admin')) {
@@ -77,14 +68,13 @@ class SoftwareController extends Controller
             $filename = uniqid() . "-" . time() . "." . $image->getClientOriginalExtension();
 
             Image::make($image)->resize(128,128)->save(public_path('images/admin/'.$filename));
-            $img_url2 ="public/images/admin/".$filename;
+            $img_url1 ="public/images/admin/".$filename;
         }
 
         $setting = new Setting;
         $setting->title = ucwords($request->title);
         $setting->logo = $img_url;
         $setting->favicon = $img_url1;
-        $setting->admin = $img_url2;
         $setting->save();
 
         Toastr::success('Setting create Successfully!');
@@ -131,6 +121,7 @@ class SoftwareController extends Controller
         $old     = $request->image;
         $old1    = $request->image1;
 
+
         if($request->hasFile('logo')) {
             if(File::exists($old)){
                 File::delete($old);
@@ -138,34 +129,24 @@ class SoftwareController extends Controller
             $image = $request->file('logo');
             $filename = uniqid() . "-" . time() . "." . $image->getClientOriginalExtension();
 
-            Image::make($image)->resize(100,100)->save(public_path('images/logo/'.$filename));
+            Image::make($image)->resize(60,60)->save(public_path('images/logo/'.$filename));
             $img_url ="public/images/logo/".$filename;
         }
 
-        if($request->hasFile('logo')) {
+        if($request->hasFile('admin')) {
             if(File::exists($old1)){
                 File::delete($old1);
             }
-            $image = $request->file('logo');
-            $filename = uniqid() . "-" . time() . "." . $image->getClientOriginalExtension();
-
-            Image::make($image)->resize(60,60)->save(public_path('images/logo/favicon/'.$filename));
-            $img_url1 ="public/images/logo/favicon/".$filename;
-        }
-
-        if($request->hasFile('admin')) {
-
             $image = $request->file('admin');
             $filename = uniqid() . "-" . time() . "." . $image->getClientOriginalExtension();
 
             Image::make($image)->resize(128,128)->save(public_path('images/admin/'.$filename));
-            $img_url2 ="public/images/admin/".$filename;
+            $img_url1 ="public/images/admin/".$filename;
         }
 
         $setting->title = ucwords($request->title);
         $setting->logo = $img_url;
         $setting->favicon = $img_url1;
-        $setting->admin = $img_url2;
         $setting->update();
 
         Toastr::success('Setting create Successfully!');
@@ -180,8 +161,21 @@ class SoftwareController extends Controller
      */
     public function destroy($id)
     {
-        Setting::findOrFail($id)->delete();
-        Toastr::success('Software setting Successfully delete');
-        return back();
+        $delete = Setting::findOrFail($id);
+        $old = $delete->logo;
+        $old1 = $delete->admin;
+
+        if ($delete) {
+                
+            if(File::exists($old)){
+                File::delete($old);
+            }
+            if(File::exists($old1)){
+                File::delete($old1);
+            }
+            $delete->delete();
+            Toastr::success('Software setting Successfully delete');
+            return back();
+        }
     }
 }
