@@ -23,8 +23,10 @@ Route::get('/order-details',[App\Http\Controllers\OrderController::class, 'index
 Route::get('/final-invoice/{id}', [App\Http\Controllers\OrderController::class, 'FinalInvoice'])->name('final.invoice');
 
 //====================== Chalan and Login Route here ========================
-Route::get('/chalan', [App\Http\Controllers\ChalanController::class, 'index'])->name('chalan.index');
-
+Route::get('/chalan/details', [App\Http\Controllers\ChalanController::class, 'index'])->name('chalan.index');
+Route::get('/chalan/invoice/{id}', [App\Http\Controllers\ChalanController::class, 'invoice'])->name('chalan.invoice');
+Route::get('/chalan', [App\Http\Controllers\ChalanController::class, 'create'])->name('chalan.create');
+Route::post('/chalan/save', [App\Http\Controllers\ChalanController::class, 'SaveChalan'])->name('chalan.store');
 
 //====================== Cart and Login Route here ========================
 Route::post('/cart/add/{id}', [App\Http\Controllers\CartController::class, 'store'])->name('addcart');

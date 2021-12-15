@@ -15,10 +15,14 @@
                               class="md md-home"></i><span> Dashboard </span></a>
                   </li>
 
-                    <li>
-                      <a href="{{ route('chalan.index') }}" class="waves-effect @yield('chalan')"><i
-                              class="md md-home"></i><span> Chalan </span></a>
-                  </li>
+                <li class="has_sub">
+                    <a class="waves-effect @yield('chalan')"><i class="md-payment"></i><span> Chalan
+                        </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ route('chalan.create') }}">Chalan Create</a></li>
+                        <li><a href="{{ route('chalan.index') }}">Manage Chalan</a></li>
+                    </ul>
+                </li>
 
                   <li class="has_sub">
                     <a class="waves-effect @yield('customer')"><i class="fa fa-users"></i><span> Customer

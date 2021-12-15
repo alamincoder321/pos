@@ -36,7 +36,7 @@ class OrderController extends Controller
         $data->pay_date     = $request->pay_date;
         $data->month        = $request->month;
         $data->pay_amount   = $request->pay_amount;
-        $data->due          = $request->total-$request->pay_amount;
+        $data->due          = $request->total-$request->pay_amount-$request->discount;
         $data->discount     = $request->discount;
         $data->total        = $request->total-$request->discount;
         $data->save();

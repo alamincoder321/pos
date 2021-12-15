@@ -106,49 +106,19 @@
                     <h4 class="text-white p-0 m-0">{{$total}} taka</h4>
                     <hr>                    
                 </div>
-                <form action="{{route ('order.place')}}" method="POST">
+                <form action="{{route ('chalan.store')}}" method="POST">
                     @csrf
-                    <div class="col-md-12 row mb-4">
-                        <div class="col-md-6 card">                        
-                            <button type="button" id="new_customer" class="btn btn-info" data-toggle="modal" data-target="#con-close-modal" class="btn btn-success">New Customer</button>
-                        </div>
-                        <div class="col-md-6">                        
-                            <button type="button" id="exit_customer" class="btn btn-purple">Exit Customer</button> 
-                        </div>
-                    </div>
-                    @if ($errors->has('customer_id'))
-                        <span class="text-danger">{{ $errors->first('customer_id') }}</span>
-                    @endif
-                    <div class="exit">
-                        <br><br><br><br>
-                        <div class="col-md-8 col-md-offset-2 mt-md-3">                            
-                            <select name="customer_id">
-                                <option></option>
-                                @foreach ($customers as $customer)
-                                  <option value="{{$customer->id}}">{{$customer->name}}</option>  
-                                @endforeach
-                            </select>
-                        </div>
-                    </div><br><br><br>
+                    <br>
                     <div class="pay">
                         <div class="col-md-8 col-md-offset-2">
-                            <div class="form-group col-md-6">
-                                <label>Pay Amount</label>
-                                <input type="text" name="pay_amount" class="form-control" autocomplete="off">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Discount</label>
-                                <input type="text" name="discount" class="form-control" autocomplete="off">
-                            </div>
                             <div class="form-group col-md-6 col-md-offset-3">
                                 <label>Total Amount</label>
                                 <input type="text" name="total" class="form-control text-center" value="{{$total}}">
                             </div>
                         </div>
                     </div>
-                    <input type="hidden" name="pay_date" value="{{date('d.m.Y')}}">
-                    <input type="hidden" name="month" value="{{date('m.Y')}}">
-                    <button type="submit" class="btn btn-success btn-lg text-center">Save Order</button>
+                    <input type="hidden" name="chalan_date" value="{{date('d.m.Y')}}">
+                    <button type="submit" class="btn btn-success btn-lg text-center">Save Chalan</button>
                 </div> <!-- end Pricing_card -->
             </form>
         </div>
@@ -218,7 +188,6 @@
 @push('js')
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
-
     $(document).ready(function(){
         $('.exit').hide();
         $("#exit_customer").click(function(){
@@ -235,6 +204,10 @@
     function updateCategory(id){
         $("#product-body").load('{{URL::to('/load/product')}}/'+id);
     }
+
+    $(".select").select2({
+      maximumSelectionLength: 2
+    });
 </script>
 
 @endpush
