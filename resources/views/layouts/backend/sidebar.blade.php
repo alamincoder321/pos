@@ -120,6 +120,7 @@
                     <ul class="list-unstyled">
                         <li><a href="{{ route('setting.create') }}">Setting create</a></li>
                         <li><a href="{{ route('setting.index') }}"> Setting manage</a></li>
+                        <li><a href="{{ route('company.create') }}"> Company Details Create</a></li>
                     </ul>
                 </li>
 

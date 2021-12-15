@@ -77,7 +77,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="field-1" class="control-label">Supplier Due</label>
-                                    <input type="text" name="pay_due" class="form-control">
+                                    <input type="text" name="pay_due" class="form-control" autocomplete="off">
                                     @if ($errors->has('pay_due'))
                                         <span class="text-danger">{{ $errors->first('pay_due') }}</span>
                                     @endif

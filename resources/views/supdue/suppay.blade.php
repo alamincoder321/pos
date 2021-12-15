@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('report')
+@section('supplier')
     active
 @endsection
 
@@ -26,9 +26,9 @@
                             <table id="datatable" class="table table-striped table-bdueed">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th>Pay Date</th>
                                         <th>Due payment</th>                                
+                                        <th>Action</th>                                
                                     </tr>
                                 </thead>
 
@@ -37,6 +37,9 @@
                                     <tr>
                                         <td>{{$item->pay_date}}</td>
                                         <td>{{$item->pay_due}}</td>
+                                        <td>
+                                            <a href="{{route('supedit', $item->id)}}" class="btn btn-info btn-sm button"><i class="fa fa-edit"></i></button>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -52,4 +55,5 @@
     </div> <!-- End Row -->
 
 @endsection
+
 

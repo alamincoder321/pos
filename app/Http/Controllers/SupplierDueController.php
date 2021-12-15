@@ -27,20 +27,48 @@ class SupplierDueController extends Controller
 
     public function SupduePay(Request $request)
     {
-        $supduepay = new DueSupplier;
-        $supduepay->supplier_id = $request->supplier_id;
-        $supduepay->pay_due = $request->pay_due;
-        $supduepay->pay_date = $request->pay_date;
-        $supduepay->save();
+        $check = DueSupplier::where('pay_due', 0)->where('supplier_id', $request->supplier_id)->first();
+        if ($check) {
+            Toastr::error('Supplier pay due not availeable!');
+            return back();
+        }else{
 
-        Toastr::success('Supplier pay due successfully!');
-        return back();
+            $supduepay = new DueSupplier;
+            $supduepay->supplier_id = $request->supplier_id;
+            $supduepay->pay_due = $request->pay_due;
+            $supduepay->pay_date = $request->pay_date;
+             $supduepay->save();
+
+            Toastr::success('Supplier pay due successfully!');
+            return back();
+        }
+
+
+
     }
 
     public function SupPayShow($id)
     {
         $suppays = DueSupplier::where('supplier_id', $id)->latest()->get();
         return view('supdue.suppay', compact('suppays'));
+    }
+
+    public function edit($id)
+    {
+        $supedit = DueSupplier::findOrFail($id);
+        return view('supdue.supedit', compact('supedit'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $supduepay = DueSupplier::findOrFail($id);
+        $supduepay->supplier_id = $request->supplier_id;
+        $supduepay->pay_due = $request->pay_due;
+        $supduepay->pay_date = $request->pay_date;
+        $supduepay->update();
+
+        Toastr::success('Supplier pay due update successfully!');
+        return redirect()->route('supdue');
     }
     
 }

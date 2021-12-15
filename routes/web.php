@@ -69,11 +69,15 @@ Route::get('/customer/inactive/{id}', [App\Http\Controllers\CustomerController::
 
 //====================== Supplier Route here ====================================
 Route::resource('/supplier', App\Http\Controllers\SupplierController::class);
-Route::get('sup/supdue', [App\Http\Controllers\SupplierDueController::class, 'person'])->name('supdue');
-Route::post('sup/duepay', [App\Http\Controllers\SupplierDueController::class, 'SupduePay'])->name('supduepay');
-Route::get('sup/duepay/{id}', [App\Http\Controllers\SupplierDueController::class, 'SupPayShow'])->name('suppayshow');
 Route::get('/supplier/active/{id}', [App\Http\Controllers\SupplierController::class, 'Active'])->name('supplier.active');
 Route::get('/supplier/inactive/{id}', [App\Http\Controllers\SupplierController::class, 'Inactive'])->name('supplier.inactive');
+
+//===================== Supplier due pay route here =============================
+Route::get('sup/supdue', [App\Http\Controllers\SupplierDueController::class, 'person'])->name('supdue');
+Route::get('sup/supedit/{id}', [App\Http\Controllers\SupplierDueController::class, 'edit'])->name('supedit');
+Route::post('sup/supedit/{id}', [App\Http\Controllers\SupplierDueController::class, 'update'])->name('supedit.update');
+Route::post('sup/duepay', [App\Http\Controllers\SupplierDueController::class, 'SupduePay'])->name('supduepay');
+Route::get('sup/duepay/{id}', [App\Http\Controllers\SupplierDueController::class, 'SupPayShow'])->name('suppayshow');
 
 
 //====================== Category Route here ====================================
@@ -92,4 +96,5 @@ Route::get('/product/inactive/{id}', [App\Http\Controllers\ProductController::cl
 
 //====================== Product Route here ====================================
 Route::resource('/setting', App\Http\Controllers\SoftwareController::class);
+Route::resource('/company', App\Http\Controllers\CompanyController::class);
 
