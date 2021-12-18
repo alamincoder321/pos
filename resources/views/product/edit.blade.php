@@ -8,7 +8,7 @@
         <div class="col-sm-12">
             <h4 class="pull-left page-title">Product</h4>
             <ol class="breadcrumb pull-right">
-                <li><a href="{{ route('dashboard') }}"> সোয়াইব মধুভান্ডার </a></li>
+                <li><a href="{{ route('dashboard') }}"> Dashboard </a></li>
                 <li class="active"> Update Product </li>
             </ol>
         </div>
@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-lg-2">Weight</label>
+                                <label class="control-label col-lg-2">Quantity</label>
                                 <div class="col-lg-9">
                                     <input type="number" name="weight" class="form-control"
                                         value="{{ $product->weight }}">

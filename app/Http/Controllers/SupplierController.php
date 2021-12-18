@@ -52,8 +52,8 @@ class SupplierController extends Controller
         $this->validate($request, [
             'name'  => 'required',
             'address'   => 'required',
-            'phone1'    => 'required|min:11',
-            'phone2'    => 'required|min:11'
+            'phone1'    => 'required|min:11|numeric',
+            'phone2'    => 'required|min:11|numeric'
         ]);
 
         $supplier = new Supplier;

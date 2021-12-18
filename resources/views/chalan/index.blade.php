@@ -8,7 +8,7 @@
         <div class="col-sm-12">
             <h4 class="pull-left page-title">Chalan</h4>
             <ol class="breadcrumb pull-right">
-                <li><a href="{{route('dashboard')}}">সাতক্ষীরা মধুভান্ডার</a></li>
+                <li><a href="{{route('dashboard')}}">Dashboard</a></li>
                 <li class="active"> Chalan List </li>
             </ol>
         </div>

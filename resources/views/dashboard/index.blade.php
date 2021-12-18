@@ -9,7 +9,7 @@
         <div class="col-sm-12">
             <h4 class="pull-left page-title">Welcome !</h4>
             <ol class="breadcrumb pull-right">
-                <li><a href="{{route('dashboard')}}">সাতক্ষীরা মধুভান্ডার</a></li>
+                <li><a href="{{route('dashboard')}}">Dashboard</a></li>
                 <li class="active">Dashboard</li>
             </ol>
         </div>
@@ -29,7 +29,7 @@
                 <span class="mini-stat-icon bg-purple"><i class="ion-ios7-cart"></i></span>
                 <div class="mini-stat-info text-right text-muted">
                     <span class="counter">{{count($orders)}}</span>
-                    Total Orders
+                    Total Invoice
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@
                 <span class="mini-stat-icon bg-purple"><i class="ion-ios7-cart"></i></span>
                 <div class="mini-stat-info text-right text-muted">
                     <span class="counter">{{count($torders)}}</span>
-                    Today Orders
+                    Today Invoice
                 </div>
             </div>
         </div>
@@ -111,7 +111,7 @@
                 <span class="mini-stat-icon bg-purple"><i class="ion-ios7-cart"></i></span>
                 <div class="mini-stat-info text-right text-muted">
                     <span class="counter">{{count($morders)}}</span>
-                    Monthly Orders
+                    Monthly Invoice
                 </div>
             </div>
         </div>

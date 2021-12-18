@@ -8,7 +8,7 @@
         <div class="col-sm-12">
             <h4 class="pull-left page-title">Supplier</h4>
             <ol class="breadcrumb pull-right">
-                <li><a href="{{route('dashboard')}}">সাতক্ষীরা মধুভান্ডার</a></li>
+                <li><a href="{{route('dashboard')}}">Dashboard</a></li>
                 <li class="active"> Add Supplier </li>
             </ol>
         </div>
@@ -48,7 +48,7 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-2">Contact One</label>
                                 <div class="col-lg-9">
-                                    <input type="number" name="phone1" class=" form-control" value="{{old('phone1')}}">
+                                    <input type="text" name="phone1" class=" form-control" value="{{old('phone1')}}">
                                     @if ($errors->has('phone1'))
                                     <span class="text-danger">{{$errors->first('phone1')}}</span>
                                     @endif
@@ -58,7 +58,7 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-2">Contact Two</label>
                                 <div class="col-lg-9">
-                                    <input type="number" name="phone2" class=" form-control" value="{{old('phone2')}}">
+                                    <input type="text" name="phone2" class=" form-control" value="{{old('phone2')}}">
                                     @if ($errors->has('phone2'))
                                     <span class="text-danger">{{$errors->first('phone2')}}</span>
                                     @endif

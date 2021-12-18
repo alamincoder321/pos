@@ -49,7 +49,8 @@ class SupplierDueController extends Controller
 
     public function SupPayShow($id)
     {
-        $suppays = DueSupplier::where('supplier_id', $id)->latest()->get();
+
+        $suppays = DueSupplier::where('supplier_id', $id)->orderBy('created_at', 'desc')->get();;
         return view('supdue.suppay', compact('suppays'));
     }
 

@@ -8,7 +8,7 @@
         <div class="col-sm-12">
             <h4 class="pull-left page-title">product</h4>
             <ol class="breadcrumb pull-right">
-                <li><a href="{{route('dashboard')}}"> সোয়াইব মধুভান্ডার </a></li>
+                <li><a href="{{route('dashboard')}}"> Dashboard </a></li>
                 <li class="active"> product List </li>
             </ol>
         </div>
@@ -32,8 +32,8 @@
                                         <th>Category</th>
                                         <th>Buying Cost</th>
                                         <th>Selling Cost</th>
-                                        <th>Total weight</th>
-                                        <th>Available weight</th>
+                                        <th>Total qty</th>
+                                        <th>Available Qty</th>
                                         <th>Total</th>
                                         <th>Action</th>                                
                                     </tr>

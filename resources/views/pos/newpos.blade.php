@@ -39,7 +39,7 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Unit Cost</th>
-                                        <th>Weight</th>
+                                        <th>Quantity</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -76,7 +76,7 @@
                         <tr>
                             <th class="text-center">Sl</th>
                             <th class="text-center">Name</th>
-                            <th class="text-center">Weight</th>
+                            <th class="text-center">Quantity</th>
                             <th class="text-center">Unit Total Price</th>
                             <th class="text-center">Action</th>
                         </tr>
